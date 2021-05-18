@@ -8,7 +8,10 @@ import {DefaultStateType} from "./state/users-reducer";
 import {selectAllSubscribers} from "./state/selectors";
 
 function App() {
-
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getSubscribers)
+    }, []);
 
 
     const subscribers = useSelector<IGlobalState, DefaultStateType>(selectAllSubscribers);

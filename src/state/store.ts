@@ -10,8 +10,3 @@ const rootReducer = combineReducers({
 export type IGlobalState = ReturnType<typeof rootReducer>;
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
-
-if (process.env.NODE_ENV === 'development') {
-    // @ts-ignore
-    window.store = store;
-}
