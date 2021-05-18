@@ -11,7 +11,8 @@ function App() {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getSubscribers)
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 
     const subscribers = useSelector<IGlobalState, DefaultStateType>(selectAllSubscribers);
