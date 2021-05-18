@@ -1,3 +1,9 @@
+Test task. For the company Briz.
+Реализовать CRUD приложение - телефонный справочник.
+Применяя следующие механизмы: React.js, HTML, CSS.
+Я написал фейковую API (phonebookAPI.js) и фейковую DB (phoneBookSubscribers.js).
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

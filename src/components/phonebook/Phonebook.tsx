@@ -3,7 +3,7 @@ import {SubscriberType} from "../../state/users-reducer";
 import {PhonebookForm} from "./phonebookForm/PhonebookForm";
 import {PhonebookSubscribers} from "./phonebookSubscribers/PhonebookSubscribers";
 import {PhonebookTitle} from "./phonebookTitle/PhonebookTitle";
-
+import phonebook from "../phonebook/phonebook.module.css"
 
 type PhonebookTablePropsType = {
     title: string
@@ -15,7 +15,7 @@ export const Phonebook = (props: PhonebookTablePropsType) => {
     const title = props.title;
     const subscribers = props.subscribers;
 
-    return <div>
+    return <div className={phonebook.phonebook} >
 
         <PhonebookTitle title={title}/>
 
