@@ -2,7 +2,7 @@ Test task. For the company Briz.
 Реализовать CRUD приложение - телефонный справочник.
 Применяя следующие механизмы: React.js, HTML, CSS.
 Я написал фейковую API (phonebookAPI.js) и фейковую DB (phoneBookSubscribers.js).
-deploy app 
+deploy app https://epic-mcclintock-668acd.netlify.app/
 
 # Getting Started with Create React App
 
