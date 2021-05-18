@@ -25,7 +25,7 @@ export const PhonebookForm = () => {
 
             if (!values.name) {
                 errors.name = 'Required'
-            } else if (values.name.length > 20) {
+            } else if (values.name.length > 20 ) {
                 errors.name = 'Must be 20 characters or less'
             } else if (values.name.length < 2) {
                 errors.name = 'Must be 2 characters or more'
@@ -33,7 +33,7 @@ export const PhonebookForm = () => {
 
             if (!values.number) {
                 errors.number = 'Required'
-            } else if (values.number.length >= 15) {
+            } else if (values.number.length > 15) {
                 errors.number = 'Must be 15 characters or less'
             } else if (values.name.length < 2) {
                 errors.number = 'Must be 2 characters or more'
@@ -63,7 +63,6 @@ export const PhonebookForm = () => {
                 <label htmlFor="phone">Phone</label>
                 <input
                     placeholder="+X-XXX-XXX-XXXX"
-                    pattern="\w\d\w \d\w\d"
                     id="number"
                     name="number"
                     type="text"
