@@ -1,8 +1,9 @@
 import React from "react";
 import {useState} from "react";
 import {useFormik} from "formik";
-import {TextField} from "@material-ui/core";
+import {Grid, Paper, TextField} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import SaveIcon from '@material-ui/icons/Save';
 
 type PhonebookSubscriberPropsType = {
     id: string
@@ -81,21 +82,52 @@ const EditableSpan = (props: EditableSpanPropsType) => {
                             error={formik.touched.number && Boolean(formik.errors.number)}
                             helperText={formik.touched.number && formik.errors.number}
                         />
-                        <Button color="primary" variant="contained"  type="submit"
+                        <Button color="primary"
+                                variant="contained"
+                                type="submit"
+                                size="small"
+                                startIcon={<SaveIcon />}
                                 style={{marginTop: "10px"}}
                         >
-                           Apply change
+                            Apply change
                         </Button>
                     </form>
                 </>
                 : <>
-                    <span> {`${props.name} ${props.number}`} </span>
-                    <button onClick={activateEditMode}
-                    > change
-                    </button>
-                    <button onClick={deleteSubscriber}
-                    > delete
-                    </button>
+                    <Grid container xs={6}
+                    >
+                        <Grid item  >
+                            <Paper style={{padding: "10px", margin: "1px"}}>
+                                <span>
+                                    <span style={{marginRight: "5px"}} > {props.name} </span>
+                                    <span style={{marginRight: "5px"}} > {props.number} </span>
+                                </span>
+                                <Button onClick={activateEditMode}
+                                        variant="contained"
+                                        color="primary"
+                                >
+                                    change
+
+                                </Button>
+                                <Button onClick={deleteSubscriber}
+                                        color="secondary"
+                                        variant="contained"
+                                >
+                                    delete
+
+                                </Button>
+                            </Paper>
+                        </Grid>
+                    </Grid>
+
+
+                    {/*<span> {`${props.name} ${props.number}`} </span>*/}
+                    {/*<button onClick={activateEditMode}*/}
+                    {/*> change*/}
+                    {/*</button>*/}
+                    {/*<button onClick={deleteSubscriber}*/}
+                    {/*> delete*/}
+                    {/*</button>*/}
                 </>
 
         }
