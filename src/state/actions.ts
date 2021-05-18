@@ -29,8 +29,6 @@ export const getSubscribers = (dispatch: Dispatch) => {
 };
 
 
-type CreateSubscriberACType = ReturnType<typeof createSubscriberAC>
-
 export const createSubscriberAC = (subscriber: SubscriberType) => {
     return {
         type: ACTIONS_TYPE.CREATE_SUBSCRIBER, subscriber
