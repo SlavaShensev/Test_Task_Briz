@@ -5,14 +5,11 @@ import {useFormik} from "formik";
 import phonebook from "../phonebookForm/phonebookForm.module.css"
 import Button from "@material-ui/core/Button";
 import {TextField} from "@material-ui/core";
-import {Grid} from "@material-ui/core";
-import {FormControl} from "@material-ui/core";
 
 type FormikErrorType = {
     name?: string
     number?: string
 }
-
 export const PhonebookForm = () => {
     const dispatch = useDispatch();
 
@@ -27,7 +24,6 @@ export const PhonebookForm = () => {
         },
         validate: (values) => {
             const errors: FormikErrorType = {};
-
             if (!values.name) {
                 errors.name = 'Required'
             } else if (values.name.length > 20) {
@@ -35,7 +31,6 @@ export const PhonebookForm = () => {
             } else if (values.name.length < 2) {
                 errors.name = 'Must be 2 characters or more'
             }
-
             if (!values.number) {
                 errors.number = 'Required'
             } else if (values.number.length > 15) {
@@ -43,59 +38,38 @@ export const PhonebookForm = () => {
             } else if (values.name.length < 2) {
                 errors.number = 'Must be 2 characters or more'
             }
-
             return errors;
         },
-
     });
-    /* onSubmit={formik.handleSubmit} */
     return <div className={phonebook.phonebookForm}>
-
-        <FormControl>
-            <Grid container
-                  spacing={1}
-                  style={{paddingBottom: "20px"}}
+        <form onSubmit={formik.handleSubmit}>
+            <TextField
+                fullWidth
+                id="name"
+                name="name"
+                label="Name"
+                type="Text"
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                error={formik.touched.name && Boolean(formik.errors.name)}
+                helperText={formik.touched.name && formik.errors.name}
+            />
+            <TextField
+                fullWidth
+                id="number"
+                name="number"
+                label="Number"
+                type="Text"
+                value={formik.values.number}
+                onChange={formik.handleChange}
+                error={formik.touched.number && Boolean(formik.errors.number)}
+                helperText={formik.touched.number && formik.errors.number}
+            />
+            <Button color="primary" variant="contained" fullWidth type="submit"
+                    style={{marginTop: "10px"}}
             >
-                <TextField variant="outlined"
-                           style={{marginRight: "10px"}}
-                           label="Name"
-                />
-                <TextField variant="outlined"
-                           label="Number"
-                />
-            </Grid>
-
-            <Button type="submit"
-                    variant="contained"
-                    color="primary"
-                    className={phonebook.buttonSubmit}
-            >
-                Add phonebook subscriber
+               Add person
             </Button>
-
-            {/*<input placeholder="Ruby Taylor"*/}
-            {/*    id="name"*/}
-            {/*    name="name"*/}
-            {/*    type="text"*/}
-            {/*    onChange={formik.handleChange}*/}
-            {/*    value={formik.values.name}*/}
-            {/*/>*/}
-            {/*{formik.errors.name ? <div style={{color: 'red'}}>{formik.errors.name}</div> : null}*/}
-
-            {/*<div>*/}
-            {/*    <TextField variant="outlined"*/}
-            {/*               label="Number"*/}
-            {/*    />*/}
-            {/*    <input placeholder="+X-XXX-XXX-XXXX"*/}
-            {/*        id="number"*/}
-            {/*        name="number"*/}
-            {/*        type="text"*/}
-            {/*        onChange={formik.handleChange}*/}
-            {/*        value={formik.values.number}*/}
-            {/*    />*/}
-            {/*    {formik.errors.number ?*/}
-            {/*        <div style={{color: 'red'}}>{formik.errors.number}</div> : null}*/}
-            {/*</div>*/}
-        </FormControl>
+        </form>
     </div>
-}
+};
