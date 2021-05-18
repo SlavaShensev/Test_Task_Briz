@@ -7,7 +7,6 @@ import {deleteSubscriberThunk, updateSubscriberThunk} from "../../../state/actio
 type PhonebookSubscribersPropsType = {
     subscribers: Array<SubscriberType>
 }
-
 export const PhonebookSubscribers = (props: PhonebookSubscribersPropsType) => {
     const dispatch = useDispatch();
     const {subscribers} = props;
@@ -15,14 +14,13 @@ export const PhonebookSubscribers = (props: PhonebookSubscribersPropsType) => {
     const deleteSubscriber = (id: string) => {
         dispatch(deleteSubscriberThunk(id))
     };
-
     const changeSubscriber = (id: string, newName: string, newNumber: string) => {
         dispatch(updateSubscriberThunk(id, newName, newNumber))
     };
-
     return <>
         {
             subscribers.map((subscriber) => {
+
                 return <PhonebookSubscriber
                     key={subscriber.id}
                     id={subscriber.id}
@@ -30,6 +28,7 @@ export const PhonebookSubscribers = (props: PhonebookSubscribersPropsType) => {
                     number={subscriber.number}
                     changeSubscriber={changeSubscriber}
                     deleteSubscriber={deleteSubscriber}
+
                 />
             })
         }

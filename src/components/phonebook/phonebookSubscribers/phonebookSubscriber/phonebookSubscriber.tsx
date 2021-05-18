@@ -1,6 +1,8 @@
 import React from "react";
 import {useState} from "react";
 import {useFormik} from "formik";
+import {TextField} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 type PhonebookSubscriberPropsType = {
     id: string
@@ -57,28 +59,33 @@ const EditableSpan = (props: EditableSpanPropsType) => {
             editMode
                 ? <>
                     <form onSubmit={formik.handleSubmit}>
-                        <div>
-                            <label>Name</label>
-                            <input
-                                id="name"
-                                name="name"
-                                type="text"
-                                onChange={formik.handleChange}
-                                value={formik.values.name}
-                            />
-                        </div>
-                        <div>
-                            <label>Number</label>
-                            <input
-                                id="number"
-                                name="number"
-                                type="text"
-                                onChange={formik.handleChange}
-                                value={formik.values.number}
-                            />
-                        </div>
-
-                        <button type="submit"> Apply</button>
+                        <TextField
+                            style={{marginRight: '5px'}}
+                            id="name"
+                            name="name"
+                            label="Name"
+                            type="Text"
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
+                            error={formik.touched.name && Boolean(formik.errors.name)}
+                            helperText={formik.touched.name && formik.errors.name}
+                        />
+                        <TextField
+                            style={{marginRight: '5px'}}
+                            id="number"
+                            name="number"
+                            label="Number"
+                            type="Text"
+                            value={formik.values.number}
+                            onChange={formik.handleChange}
+                            error={formik.touched.number && Boolean(formik.errors.number)}
+                            helperText={formik.touched.number && formik.errors.number}
+                        />
+                        <Button color="primary" variant="contained"  type="submit"
+                                style={{marginTop: "10px"}}
+                        >
+                           Apply change
+                        </Button>
                     </form>
                 </>
                 : <>
