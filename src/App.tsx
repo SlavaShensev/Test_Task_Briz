@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from "react";
 import './App.css';
+import {Phonebook} from "./components/phonebook/Phonebook";
+import {useDispatch, useSelector} from "react-redux";
+import {getSubscribers} from "./state/actions";
+import {IGlobalState} from "./state/store";
+import {DefaultStateType} from "./state/users-reducer";
+import {selectAllSubscribers} from "./state/selectors";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getSubscribers)
+    }, []);
+
+
+    const subscribers = useSelector<IGlobalState, DefaultStateType>(selectAllSubscribers);
+
+
+    return (
+        <div className={'App'}>
+
+            <Phonebook
+
+                title={'Phonebook'}
+                subscribers={subscribers}
+
+            />
+
+        </div>
+    )
 }
 
 export default App;
